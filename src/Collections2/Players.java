@@ -1,5 +1,7 @@
 package Collections2;
 
+import java.util.Objects;
+
 public class Players {
     private String name;
     private int age;
@@ -23,5 +25,19 @@ public class Players {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Players players = (Players) o;
+        return age == players.age &&
+                Objects.equals(name, players.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
     }
 }
